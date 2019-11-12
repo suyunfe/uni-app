@@ -2,7 +2,7 @@
   "name": "@suyunfe/vue-cli-plugin-unikg",
   "version": "1.0.0",
   "uniappVersion": "2.0.0-alpha-23620191020004",
-  "description": "uni-app plugin for vue-cli 3",
+  "description": "kgfe uni-app plugin for vue-cli 3",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -15,7 +15,7 @@
   "bin": {
     "kguniapp-cli": "./bin/kguniapp-cli.js"
   },
-  "author": "fxy060608",
+  "author": "AngusC",
   "license": "Apache-2.0",
   "dependencies": {
     "ali-oss": "^6.1.1",
