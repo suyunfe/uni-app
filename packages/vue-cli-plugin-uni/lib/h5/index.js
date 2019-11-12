@@ -3,10 +3,11 @@ const path = require('path')
 
 const {
   getMainEntry,
-  getH5Options,
   getPlatformCompiler,
   getPlatformCssnano
 } = require('@dcloudio/uni-cli-shared')
+
+const { getH5Options } = require('../../util/manifest')
 
 const WebpackHtmlAppendPlugin = require('../../packages/webpack-html-append-plugin')
 

@@ -84,7 +84,8 @@ module.exports = function chainWebpack (platformOptions) {
     webpackConfig
       .plugin('uni-define')
       .use(require.resolve('webpack/lib/DefinePlugin'), [{
-        'process.env.UNI_ENV': JSON.stringify(process.env.UNI_PLATFORM)
+        'process.env.UNI_ENV': JSON.stringify(process.env.UNI_PLATFORM),
+        APP_NS: JSON.stringify(process.env.APP_NS)
       }])
 
     if (runByHBuilderX) { // 由 HBuilderX 运行时，移除进度，错误

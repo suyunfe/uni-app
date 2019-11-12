@@ -1,0 +1,10 @@
+NODE_ENV="production"
+VUE_APP_ENV="sandbox"
+
+APP_HOST="<%- sandboxAppServerHost %>"
+
+FTP_HOST="<%- sandboxFTPServerHost %>"
+FTP_PORT="<%- sandboxFTPServerPort %>"
+FTP_USERNAME="<%- sandboxFTPServerUsername %>"
+FTP_PASSWORD="<%- sandboxFTPServerPassword %>"
+

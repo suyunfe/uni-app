@@ -55,7 +55,9 @@ if (Array.isArray(pagesJsonObj.subPackages)) {
 }
 
 const manifestJsonObj = getManifestJson()
-const platformOptions = manifestJsonObj[process.env.UNI_PLATFORM] || {}
+const platformOptions = process.env.UNI_PLATFORM === 'h5' ?
+  (manifestJsonObj[process.env.UNI_PLATFORM][process.env.APP_NS] || {}) :
+  (manifestJsonObj[process.env.UNI_PLATFORM] || {})
 
 if (manifestJsonObj.debug) {
   process.env.VUE_APP_DEBUG = true

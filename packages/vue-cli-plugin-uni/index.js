@@ -10,18 +10,21 @@ require('./lib/check-update')()
 
 const initBuildCommand = require('./commands/build')
 const initServeCommand = require('./commands/serve')
+const initDeployCommand = require('./commands/deploy')
 
 module.exports = (api, options) => {
   initServeCommand(api, options)
-
   initBuildCommand(api, options)
+  initDeployCommand(api, options)
 
   const platformOptions = require('./lib/' + process.env.UNI_PLATFORM)
 
   Object.assign(options, { // TODO 考虑非 HBuilderX 运行时，可以支持自定义输出目录
     outputDir: process.env.UNI_OUTPUT_TMP_DIR || process.env.UNI_OUTPUT_DIR,
     assetsDir
-  }, platformOptions.vueConfig)
+  }, platformOptions.vueConfig, {
+    publicPath: process.env.NODE_ENV === 'production' ? options.publicPath : '/'
+  })
 
   require('./lib/options')(options)
 
@@ -30,6 +33,7 @@ module.exports = (api, options) => {
 }
 
 module.exports.defaultModes = {
-  'uni-serve': 'development',
-  'uni-build': process.env.NODE_ENV
+  'kguni-serve': 'development',
+  'kguni-build': process.env.NODE_ENV,
+  'deploy': 'test'
 }

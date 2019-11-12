@@ -11,9 +11,9 @@ const defaults = {
 }
 
 module.exports = (api, options) => {
-  api.registerCommand('uni-serve', {
+  api.registerCommand('kguni-serve', {
     description: 'start development server',
-    usage: 'vue-cli-service uni-serve [options] [entry]',
+    usage: 'vue-cli-service kguni-serve [options] [entry]',
     options: {
       '--open': `open browser on server start`,
       '--copy': `copy url to clipboard on server start`,
@@ -37,12 +37,13 @@ module.exports = (api, options) => {
     const webpack = require('webpack')
     const WebpackDevServer = require('webpack-dev-server')
     const portfinder = require('portfinder')
+    // const webpackApiMocker = require('mocker-api')
     const prepareURLs = require('@vue/cli-service/lib/util/prepareURLs')
     const prepareProxy = require('@vue/cli-service/lib/util/prepareProxy')
     const launchEditorMiddleware = require('launch-editor-middleware')
     const validateWebpackConfig = require('@vue/cli-service/lib/util/validateWebpackConfig')
     const isAbsoluteUrl = require('@vue/cli-service/lib/util/isAbsoluteUrl')
-
+    const projectConfig = require(path.resolve(process.env.UNI_CLI_CONTEXT, 'project-config.js'))
     // resolve webpack config
     const webpackConfig = api.resolveWebpackConfig()
 
@@ -94,7 +95,7 @@ module.exports = (api, options) => {
     )
 
     const proxySettings = prepareProxy(
-      projectDevServerOptions.proxy,
+      projectDevServerOptions.proxy || projectConfig.dev.proxy,
       api.resolve('public')
     )
 
@@ -161,6 +162,10 @@ module.exports = (api, options) => {
       before (app, server) {
         // launch editor support.
         // this works with vue-devtools & @vue/cli-overlay
+        // if (projectConfig.dev.mock) {
+        // webpackApiMocker(app, path.resolve('./mock/index.js'));
+        // }
+
         app.use('/__open-in-editor', launchEditorMiddleware(() => console.log(
           `To specify an editor, sepcify the EDITOR env variable or ` +
                     `add "editor" field to your Vue project config.\n`
@@ -198,7 +203,7 @@ module.exports = (api, options) => {
     return new Promise((resolve, reject) => {
       // log instructions & open browser on first compilation complete
       let isFirstCompile = true
-      compiler.hooks.done.tap('vue-cli-service uni-serve', stats => {
+      compiler.hooks.done.tap('vue-cli-service kguni-serve', stats => {
         if (stats.hasErrors()) {
           return
         }

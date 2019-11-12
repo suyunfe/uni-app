@@ -17,12 +17,13 @@ const modifyConfig = (config, fn) => {
 }
 
 module.exports = (api, options) => {
-  api.registerCommand('uni-build', {
+  api.registerCommand('kguni-build', {
     description: 'build for production',
-    usage: 'vue-cli-service uni-build [options]',
+    usage: 'vue-cli-service kguni-build [options]',
     options: {
       '--watch': `watch for changes`,
-      '--minimize': `Tell webpack to minimize the bundle using the TerserPlugin.`
+      '--minimize': `Tell webpack to minimize the bundle using the TerserPlugin.`,
+      '--mode': `specify server env mode, test | sandbox | online (default: test), h5 only`
     }
   }, async (args) => {
     for (const key in defaults) {
@@ -143,5 +144,5 @@ async function build (args, api, options) {
 }
 
 module.exports.defaultModes = {
-  'uni-build': process.env.NODE_ENV
+  'kguni-build': process.env.NODE_ENV
 }
