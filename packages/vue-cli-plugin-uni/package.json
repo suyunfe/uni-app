@@ -15,7 +15,14 @@
   "bin": {
     "kguniapp-cli": "./bin/kguniapp-cli.js"
   },
-  "author": "AngusC",
+  "author": "kuaigou FE",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/suyunfe/uni-app.git"
+  },
+  "homepage": "https://github.com/suyunfe/uni-app.git",
   "license": "Apache-2.0",
   "dependencies": {
     "ali-oss": "^6.1.1",
