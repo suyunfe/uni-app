@@ -3,8 +3,3 @@ VUE_APP_ENV="online"
 
 APP_HOST="<%- onlineAppServerHost %>"
 
-FTP_HOST="<%- onlineFTPServerHost %>"
-FTP_PORT="<%- onlineFTPServerPort %>"
-FTP_USERNAME="<%- onlineFTPServerUsername %>"
-FTP_PASSWORD="<%- onlineFTPServerPassword %>"
-

@@ -3,7 +3,3 @@ VUE_APP_ENV="test"
 
 APP_HOST="<%- testAppServerHost %>"
 
-FTP_HOST="<%- testFTPServerHost %>"
-FTP_PORT="<%- testFTPServerPort %>"
-FTP_USERNAME="<%- testFTPServerUsername %>"
-FTP_PASSWORD="<%- testFTPServerPassword %>"

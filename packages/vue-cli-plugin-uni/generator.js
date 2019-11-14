@@ -28,8 +28,8 @@ module.exports = (api, options, rootOptions) => {
         'dev:custom': 'cross-env NODE_ENV=development uniapp-cli custom',
         'deploy:test': 'npm run deploy:h5:test',
         'deploy:sandbox': 'npm run deploy:h5:sandbox',
-        'deploy:h5:test': 'cross-env UNI_PLATFORM=h5 APP_NS=test vue-cli-service deploy --mode test',
-        'deploy:h5:sandbox': 'cross-env UNI_PLATFORM=h5 APP_NS=sandbox vue-cli-service deploy --mode sandbox',
+        'deploy:h5:sandbox': 'cross-env UNI_PLATFORM=h5 APP_NS=sandbox vue-cli-service deploy --mode sandbox --source dist/build/h5',
+        'deploy:h5:test': 'cross-env UNI_PLATFORM=h5 APP_NS=test vue-cli-service deploy --mode test --source dist/build/h5',
         'release:test': 'npm run build:test && npm run deploy:test',
         'release:sandbox': 'npm run build:sandbox && npm run deploy:sandbox',
         'build:custom': 'cross-env NODE_ENV=production uniapp-cli custom'

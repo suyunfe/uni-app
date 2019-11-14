@@ -44,10 +44,15 @@ function addTag (tag) {
   process.UNI_TAGS.add(tag)
 }
 
+const assetUrlsModule = require('@vue/component-compiler-utils/dist/templateCompilerModules/assetUrl').default
+const builtInModules = assetUrlsModule({ 'v-uni-image': 'src' })
+
 module.exports = {
   isUnaryTag,
   preserveWhitespace: false,
   modules: [require('../format-text'), {
+    ...builtInModules
+  }, {
     preTransformNode (el, {
       warn
     }) {

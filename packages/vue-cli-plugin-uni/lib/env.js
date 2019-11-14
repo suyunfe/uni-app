@@ -55,9 +55,20 @@ if (Array.isArray(pagesJsonObj.subPackages)) {
 }
 
 const manifestJsonObj = getManifestJson()
-const platformOptions = process.env.UNI_PLATFORM === 'h5' ?
-  (manifestJsonObj[process.env.UNI_PLATFORM][process.env.APP_NS] || {}) :
-  (manifestJsonObj[process.env.UNI_PLATFORM] || {})
+
+const getPlatformOptions = () => {
+  if (process.env.UNI_PLATFORM === 'h5') {
+    if (manifestJsonObj[process.env.UNI_PLATFORM]) {
+      return manifestJsonObj[process.env.UNI_PLATFORM][process.env.APP_NS] || manifestJsonObj[process.env.UNI_PLATFORM]
+    } else {
+      return {}
+    }
+  }
+
+  return manifestJsonObj[process.env.UNI_PLATFORM] || {}
+}
+
+const platformOptions = getPlatformOptions()
 
 if (manifestJsonObj.debug) {
   process.env.VUE_APP_DEBUG = true
