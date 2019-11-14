@@ -12,7 +12,7 @@ module.exports = {
   projectName: '<%- rootOptions.projectName %>',
   publicPath: isDev
     ? '/'
-    : `//${appServerHost}/fe/static/${gitGroup}/${projectName}/${APP_NS}`,
+    : `//${appServerHost}/fe/static/${gitGroup}/${projectName}/${APP_NS}/`,
   dev: {
     // https://webpack.docschina.org/configuration/dev-server/#devserver-proxy
     proxy: {
