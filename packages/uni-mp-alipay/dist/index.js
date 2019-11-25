@@ -245,7 +245,7 @@ function isSyncApi (name) {
 }
 
 function isCallbackApi (name) {
-  return CALLBACK_API_RE.test(name)
+  return CALLBACK_API_RE.test(name) && name !== 'onPush'
 }
 
 function handlePromise (promise) {
@@ -1559,6 +1559,8 @@ function parseBaseApp (vm, {
       };
 
       this.$vm.$scope = this;
+      // vm 上也挂载 globalData
+      this.$vm.globalData = this.globalData;
 
       this.$vm._isMounted = true;
       this.$vm.__call_hook('mounted', args);
@@ -2021,7 +2023,13 @@ function parseComponent (vueComponentOptions) {
     data: initData(vueOptions, Vue.prototype),
     props,
     didMount () {
-      initVm.call(this, VueComponent);
+      if (my.dd) { // 钉钉小程序底层基础库有 bug,组件嵌套使用时,在 didMount 中无法及时调用 props 中的方法
+        setTimeout(() => {
+          initVm.call(this, VueComponent);
+        }, 4);
+      } else {
+        initVm.call(this, VueComponent);
+      }
 
       initSpecialMethods(this);
 

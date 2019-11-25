@@ -1,7 +1,7 @@
 {
   "name": "@suyunfe/vue-cli-plugin-unikg",
   "version": "1.0.2",
-  "uniappVersion": "2.0.0-alpha-23620191020004",
+  "uniappVersion": "2.0.0-24220191115004",
   "description": "kgfe uni-app plugin for vue-cli 3",
   "main": "index.js",
   "repository": {
@@ -26,7 +26,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "ali-oss": "^6.1.1",
-    "@dcloudio/uni-stat": "^2.0.0-alpha-23620191020004",
+    "@dcloudio/uni-stat": "^2.0.0-24220191115004",
     "copy-webpack-plugin": "^4.6.0",
     "cross-env": "^5.2.0",
     "envinfo": "^6.0.1",
@@ -43,5 +43,5 @@
     "wrap-loader": "^0.2.0",
     "xregexp": "4.0.0"
   },
-  "gitHead": "5064652ab5aa907aedf637f163815660ecb8cfd9"
+  "gitHead": "5e13dffd1c33347c5faa64f1f8f15f5b0edcfeed"
 }

@@ -444,9 +444,10 @@ uni-app 提供内置 CSS 变量
 - 支持 base64 格式图片。
 - 支持网络路径图片。
 - 使用本地路径背景图片需注意：
-    1. 图片小于 40kb，``uni-app`` 会自动将其转化为 base64 格式；
-    2. 图片大于等于 40kb， 需开发者自己将其转换为base64格式使用，或将其挪到服务器上，从网络地址引用。
+    1. 图片小于 40kb，``uni-app`` 会自动将其转化为 base64 格式
+    2. 图片大于等于 40kb， 需开发者自己将其转换为 base64 格式使用，或将其挪到服务器上，从网络地址引用。
     3. 本地背景图片的引用路径推荐使用以 ~@ 开头的绝对路径。
+    4. `uni-app v3`版本设定为不自动将图片转 base64 格式
    ```css
         .test2 {
             background-image: url('~@/static/logo.png');
@@ -540,7 +541,7 @@ ES6 API 的支持，详见如下表格部分（`x` 表示不支持，无特殊�
 |String|iOS8|iOS9|iOS10|Android|
 |:-|:-|:-|:-|:-|
 |codePointAt|||||
-|normalize|x|x|||
+|normalize|x|x||仅支持 NFD/NFC|
 |includes|||||
 |startsWith|||||
 |endsWith|||||
@@ -950,9 +951,9 @@ slide-view.vue
 
 ## WXS
 
-WXS是微信小程序的一套脚本语言，[规范详见](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/)。
+WXS是一套运行在视图层的脚本语言，[微信端的规范详见](https://developers.weixin.qq.com/miniprogram/dev/framework/view/wxs/)。
 
-它的特点是运行在渲染层。当需要避免逻辑层和渲染层交互通信折损时，可采用wxs。
+它的特点是运行在视图层。当需要避免逻辑层和渲染层交互通信折损时，可采用wxs。
 
 uni-app可以将wxs代码编译到微信小程序、QQ小程序、APP、H5上（`HBuilderX 2.2.5`及以上版本）
 
@@ -964,7 +965,7 @@ uni-app可以将wxs代码编译到微信小程序、QQ小程序、APP、H5上（
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |√(不支持nvue)|√|√|SJS|Filter|x|√|
 
-App端nvue解决类型需求，不应该使用wxs，而是使用bindingx。
+App端nvue解决此类需求，不应该使用wxs，而是使用bindingx。
 
 **wxs示例**
 
