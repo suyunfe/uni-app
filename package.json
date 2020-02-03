@@ -31,12 +31,16 @@
     "safe-area-insets": "^1.4.1"
   },
   "private": true,
+  "peerDependencies": {
+    "@vue/component-compiler-utils": "^3.1.1"
+  },
   "devDependencies": {
     "@types/html5plus": "^1.0.0",
     "@vue/cli-plugin-babel": "^3.4.1",
     "@vue/cli-plugin-eslint": "^3.4.1",
     "@vue/cli-plugin-unit-mocha": "^3.4.1",
     "@vue/cli-service": "^3.4.1",
+    "@vue/component-compiler-utils": "^3.1.1",
     "@vue/test-utils": "^1.0.0-beta.25",
     "babel-eslint": "^10.0.1",
     "babylon": "^6.18.0",

@@ -122,7 +122,7 @@ module.exports = {
       }))
       .end()
       .use('uniapp-custom-block-loader')
-      .loader(require.resolve('@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader'))
+      .loader(require.resolve('@dcloudio/vue-cli-plugin-uni/packages/webpack-custom-block-loader/index.bak.js'))
       .options({
         compiler: getPlatformCompiler()
       })
