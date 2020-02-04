@@ -46,6 +46,7 @@ module.exports = (api, options, rootOptions) => {
         '@dcloudio/uni-mp-alipay': version,
         '@dcloudio/uni-mp-toutiao': version,
         '@dcloudio/uni-stat': version,
+        'core-js': '^2.6.10',
         'flyio': '^0.6.2',
         'vuex': '^3.0.1'
       },
@@ -58,6 +59,8 @@ module.exports = (api, options, rootOptions) => {
         '@dcloudio/vue-cli-plugin-uni-optimize': version,
         '@dcloudio/webpack-uni-mp-loader': version,
         '@dcloudio/webpack-uni-pages-loader': version,
+        '@vue/cli-plugin-babel': '3.5.1',
+        '@vue/cli-service': '4.0.5',
         'babel-plugin-import': '^1.11.0',
         'mockjs': '^1.0.1-beta3',
         'express': '^4.16.4',
