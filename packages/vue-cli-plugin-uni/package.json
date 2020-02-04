@@ -1,6 +1,6 @@
 {
   "name": "@suyunfe/vue-cli-plugin-unikg",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "uniappVersion": "2.0.0-alpha-25720200116004",
   "description": "kgfe uni-app plugin for vue-cli 3",
   "main": "index.js",
