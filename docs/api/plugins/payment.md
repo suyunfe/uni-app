@@ -11,7 +11,7 @@ uni.requestPayment是一个统一各平台的客户端支付API，不管是在�
 
 **平台差异说明**
 
-|5+App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|QQ小程序|
+|App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|QQ小程序|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 |√|[说明](/api/plugins/payment?id=h5-payment)|√|√|√|√|√|
 
@@ -20,7 +20,7 @@ uni.requestPayment是一个统一各平台的客户端支付API，不管是在�
 |参数名|类型|必填|说明|平台差异说明|
 |:-|:-|:-|:-||
 |provider|String|是|服务提供商，通过 [uni.getProvider](/api/plugins/provider) 获取。||
-|orderInfo|String/Object|是|订单数据，[注意事项](/api/plugins/payment?id=orderinfo)|5+App、支付宝小程序、百度小程序、头条小程序|
+|orderInfo|String/Object|是|订单数据，[注意事项](/api/plugins/payment?id=orderinfo)|App、支付宝小程序、百度小程序、头条小程序|
 |timeStamp|String|微信小程序必填|时间戳从1970年1月1日至今的秒数，即当前的时间。|微信小程序|
 |nonceStr|String|微信小程序必填|随机字符串，长度为32个字符以下。|微信小程序|
 |package|String|微信小程序必填|统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=xx。|微信小程序|
@@ -36,14 +36,15 @@ uni.requestPayment是一个统一各平台的客户端支付API，不管是在�
 
 
 #### 注意事项
-- 头条小程序支付接口调整使用时请注意[发起头条支付](https://developer.toutiao.com/dev/miniapp/ucTO2EjL3kjNx4yN5YTM)
+- 头条小程序支付接口调整使用时请注意[发起头条支付](https://developer.toutiao.com/dev/cn/mini-app/develop/open-capacity/payment/pay)
 
 #### orderInfo 注意事项@orderInfo
 1. 百度小程序的 orderInfo 为 Object 类型，详细的数据结构，参考：[百度收银台支付](https://smartprogram.baidu.com/docs/develop/api/open_payment/#requestPolymerPayment/)。
 2. 支付宝小程序的 orderInfo(支付宝的规范为 tradeNO) 为 String 类型，表示支付宝交易号。
-3. 头条小程序的 orderInfo(头条的规范为 data) 为 Object 类型，详见：[发起头条支付](https://developer.toutiao.com/dev/miniapp/ucTO2EjL3kjNx4yN5YTM)
-4. App端，支付宝支付和微信支付 orderInfo 均为 String 类型。
-5. App端，苹果应用内支付 orderInfo 为Object 类型，{productid: 'productid'}。
+3. 头条小程序的 orderInfo 为 Object 类型，详见：[发起头条支付](https://developer.toutiao.com/dev/cn/mini-app/develop/open-capacity/payment/pay)
+4. 由于头条新版支付接口要求版本较高，在不支持新版支付接口的情况下仍会对应旧版支付接口，此时 orderInfo 对应头条小程序 data， 详见：[头条支付旧版接口](https://developer.toutiao.com/dev/cn/mini-app/develop/open-capacity/payment/requestpayment-deprecated)。用户可以使用 tt.pay 判断是否支持新版接口。另外需要注意头条小程序在`1.35.0+`版本基础库支持了 canIUse ，在`1.19.4+`版本基础库支持了新版支付接口 tt.pay ，所以应避免使用 canIUse 判断是否为新版接口。
+5. App端，支付宝支付和微信支付 orderInfo 均为 String 类型。
+6. App端，苹果应用内支付 orderInfo 为Object 类型，{productid: 'productid'}。
 
 #### H5 平台@h5-payment
 - 普通浏览器平台的支付，仍然是常规web做法。uni-app未封装。
@@ -117,8 +118,8 @@ uni.requestPayment是一个统一各平台的客户端支付API，不管是在�
 - Q：如何使用ping++等聚合支付
   A：uni-app的js API 已经完成跨端统一，客户端无需使用三方聚合支付。仅在服务器端使用三方聚合支付即可。
 
-- Q：App端如何集成其他支付SDK
-  A：使用原生插件方式，可以集成如paypal或三方聚合支付sdk，原生插件开发文档见[https://ask.dcloud.net.cn/article/35428](https://ask.dcloud.net.cn/article/35428)。开发之前可以先去[插件市场](https://ext.dcloud.net.cn/)看下有没有做好的。
+- Q：App端如何使用其他支付，比如银联、PayPal。
+  A：1、可以在web-view组件里使用它们的wap版支付；2、可以集成原生sdk，插件市场均有，[详见](https://ext.dcloud.net.cn/search?q=%E6%94%AF%E4%BB%98)。也可以自行开发原生插件，开发文档见[https://ask.dcloud.net.cn/article/35428](https://ask.dcloud.net.cn/article/35428)。
 
 - Q：Appstore审核报PGPay SDK不允许上架的问题
   A：数字类产品（比如购买会员等不需要配送实物的商品），Apple规定必须使用苹果IAP应用内支付，给Apple分成30%。打包的时候不要勾选微信或支付宝等其他支付方式。如果你提交的包里包含了微信支付宝等支付的sdk，即使没使用，Appstore也会认为你有隐藏方式，以后会绕过iap，不给Apple分成，因此拒绝你的App上线。云打包时，manifest里选上支付模块，但sdk配置里去掉微信支付和支付宝支付。很多开发者的Android版是包含微信和支付宝支付的，此时注意分开判断。详见[https://ask.dcloud.net.cn/article/36447](https://ask.dcloud.net.cn/article/36447)

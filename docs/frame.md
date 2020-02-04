@@ -43,7 +43,7 @@
 
 |有效目录|说明|
 |:-:|:-:|
-|app-plus|5+App|
+|app-plus|App|
 |h5|H5|
 |mp-weixin|微信小程序|
 |mp-alipay|支付宝小程序|
@@ -80,17 +80,17 @@
 |onReady|监听页面初次渲染完成。注意如果渲染速度快，会在页面进入动画完成前触发|||
 |onHide|监听页面隐藏|||
 |onUnload|监听页面卸载|||
-|onResize|监听窗口尺寸变化|5+App、微信小程序||
+|onResize|监听窗口尺寸变化|App、微信小程序||
 |onPullDownRefresh|监听用户下拉动作，一般用于下拉刷新，参考[示例](api/ui/pulldown)|||
 |onReachBottom|页面上拉触底事件的处理函数|||
-|onTabItemTap|点击 tab 时触发，参数为Object，具体见下方注意事项|微信小程序、百度小程序、H5、5+App（自定义组件模式）||
+|onTabItemTap|点击 tab 时触发，参数为Object，具体见下方注意事项|微信小程序、百度小程序、H5、App（自定义组件模式）||
 |onShareAppMessage|用户点击右上角分享|微信小程序、百度小程序、头条小程序、支付宝小程序||
 |onPageScroll|监听页面滚动，参数为Object|||
 |onNavigationBarButtonTap|监听原生标题栏按钮点击事件，参数为Object|5+ App、H5||
-|onBackPress|监听页面返回，返回 event = {from:backbutton、 navigateBack} ，backbutton 表示来源是左上角返回按钮或 android 返回键；navigateBack表示来源是 uni.navigateBack ；详细说明及使用：[onBackPress 详解](http://ask.dcloud.net.cn/article/35120)|5+App、H5||
-|onNavigationBarSearchInputChanged|监听原生标题栏搜索输入框输入内容变化事件|5+App、H5|1.6.0|
-|onNavigationBarSearchInputConfirmed|监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发。|5+App、H5|1.6.0|
-|onNavigationBarSearchInputClicked|监听原生标题栏搜索输入框点击事件|5+App、H5|1.6.0|
+|onBackPress|监听页面返回，返回 event = {from:backbutton、 navigateBack} ，backbutton 表示来源是左上角返回按钮或 android 返回键；navigateBack表示来源是 uni.navigateBack ；详细说明及使用：[onBackPress 详解](http://ask.dcloud.net.cn/article/35120)|App、H5||
+|onNavigationBarSearchInputChanged|监听原生标题栏搜索输入框输入内容变化事件|App、H5|1.6.0|
+|onNavigationBarSearchInputConfirmed|监听原生标题栏搜索输入框搜索事件，用户点击软键盘上的“搜索”按钮时触发。|App、H5|1.6.0|
+|onNavigationBarSearchInputClicked|监听原生标题栏搜索输入框点击事件|App、H5|1.6.0|
 
 ``onPageScroll`` 参数说明：
 
@@ -139,11 +139,11 @@ export default {
 
 ## 路由
 
-``uni-app``路由全部交给框架统一管理，开发者需要在[pages.json](/collocation/pages?id=pages)里配置每个路由页面的路径及页面样式，不支持 ``Vue Router``。
+``uni-app``页面路由为框架统一管理，开发者需要在[pages.json](/collocation/pages?id=pages)里配置每个路由页面的路径及页面样式。类似小程序在app.json中配置页面路由一样。所以 `uni-app` 的路由用法与 ``Vue Router`` 不同，如仍希望采用 `Vue Router` 方式管理路由，可在插件市场搜索 [Vue-Router](https://ext.dcloud.net.cn/search?q=vue-router)。
 
 ### 路由跳转
 
-``uni-app`` 有两种路由跳转方式：使用[navigator](/component/navigator)组件跳转、调用[API](/api/router)跳转。
+``uni-app`` 有两种页面路由跳转方式：使用[navigator](/component/navigator)组件跳转、调用[API](/api/router)跳转。
 
 ### 页面栈
 
@@ -324,8 +324,8 @@ rpx 是相对于基准宽度的单位，可以根据屏幕宽度进行自适应�
 |#id|#firstname|选择拥有 id="firstname" 的组件|
 |element|view|选择所有 view 组件|
 |element, element|view, checkbox|选择所有文档的 view 组件和所有的 checkbox 组件|
-|::after|view::after|在 view 组件后边插入内容，**仅微信小程序和5+App生效**|
-|::before|view::before|在 view 组件前边插入内容，**仅微信小程序和5+App生效**|
+|::after|view::after|在 view 组件后边插入内容，**仅微信小程序和App生效**|
+|::before|view::before|在 view 组件前边插入内容，**仅微信小程序和App生效**|
 
 **注意：** 
 - 在 ```uni-app``` 中不能使用 ```*``` 选择器。
@@ -349,7 +349,7 @@ page {
 
 uni-app 提供内置 CSS 变量
 
-|CSS变量|描述|5+App|小程序|H5|
+|CSS变量|描述|App|小程序|H5|
 |:-|:-|:-|:-|:-|
 |--status-bar-height|系统状态栏高度|[系统状态栏高度](http://www.html5plus.org/doc/zh_cn/navigator.html#plus.navigator.getStatusbarHeight)、nvue注意见下|25px|0|
 |--window-top|内容区域距离顶部的距离|0|0|NavigationBar 的高度|
@@ -357,7 +357,7 @@ uni-app 提供内置 CSS 变量
 
 
 **注意：**
-- ``var(--status-bar-height)`` 此变量在微信小程序环境为固定 ``25px``，在 5+App 里为手机实际状态栏高度。
+- ``var(--status-bar-height)`` 此变量在微信小程序环境为固定 ``25px``，在 App 里为手机实际状态栏高度。
 - 当设置 ``"navigationStyle":"custom"`` 取消原生导航栏后，由于窗体为沉浸式，占据了状态栏位置。此时可以使用一个高度为 ``var(--status-bar-height)`` 的 view 放在页面顶部，避免页面内容出现在状态栏。
 - 由于在H5端，不存在原生导航栏和tabbar，也是前端div模拟。如果设置了一个固定位置的居底view，在小程序和App端是在tabbar上方，但在H5端会与tabbar重叠。此时可使用`--window-bottom`，不管在哪个端，都是固定在tabbar上方。
 - 目前 nvue 在App端，还不支持 `--status-bar-height`变量，替代方案是在页面onLoad时通过uni.getSystemInfoSync().statusBarHeight获取状态栏高度，然后通过style绑定方式给占位view设定高度。下方提供了示例代码
@@ -439,15 +439,15 @@ uni-app 提供内置 CSS 变量
 
 ### 背景图片
 
-``uni-app`` 支持使用在 css 里设置背景图片，使用方式与普通 ``web`` 项目相同，需要注意以下几点：
+``uni-app`` 支持使用在 css 里设置背景图片，使用方式与普通 ``web`` 项目大体相同，但需要注意以下几点：
 
 - 支持 base64 格式图片。
 - 支持网络路径图片。
+- 小程序不支持在css中使用本地文件，包括本地的背景图和字体文件。需以base64方式方可使用。App端在v3模式以前，也有相同限制。v3编译模式起支持直接使用本地背景图和字体。
 - 使用本地路径背景图片需注意：
-    1. 图片小于 40kb，``uni-app`` 会自动将其转化为 base64 格式
-    2. 图片大于等于 40kb， 需开发者自己将其转换为 base64 格式使用，或将其挪到服务器上，从网络地址引用。
+    1. 为方便开发者，在背景图片小于 40kb 时，``uni-app`` 编译到不支持本地背景图的平台时，会自动将其转化为 base64 格式；
+    2. 图片大于等于 40kb，会有性能问题，不建议使用太大的背景图，如开发者必须使用，则需自己将其转换为 base64 格式使用，或将其挪到服务器上，从网络地址引用。
     3. 本地背景图片的引用路径推荐使用以 ~@ 开头的绝对路径。
-    4. `uni-app v3`版本设定为不自动将图片转 base64 格式
    ```css
         .test2 {
             background-image: url('~@/static/logo.png');
@@ -456,7 +456,7 @@ uni-app 提供内置 CSS 变量
 
 **注意**
 - 微信小程序不支持相对路径（真机不支持，开发工具支持）
-- 其他端使用本地背景图片作为背景图没有限制
+
 
 ### 字体图标
 
@@ -464,11 +464,12 @@ uni-app 提供内置 CSS 变量
 
 - 支持 base64 格式字体图标。
 - 支持网络路径字体图标。
+- 小程序不支持在css中使用本地文件，包括本地的背景图和字体文件。需以base64方式方可使用。App端在v3模式以前，也有相同限制。v3编译模式起支持直接使用本地背景图和字体。
 - 网络路径必须加协议头 ``https``。
 - 从 [http://www.iconfont.cn](http://www.iconfont.cn) 上拷贝的代码，默认是没加协议头的。 
-- ``uni-app`` 本地路径图标字体支持情况：
-    1. 字体文件小于 40kb，``uni-app`` 会自动将其转化为 base64 格式；
-    2. 字体文件大于等于 40kb， 需开发者自己转换，否则使用将不生效；
+- 使用本地路径图标字体需注意：
+    1. 为方便开发者，在字体文件小于 40kb 时，``uni-app`` 会自动将其转化为 base64 格式；
+    2. 字体文件大于等于 40kb，仍转换为 base64 方式使用的话可能有性能问题，如开发者必须使用，则需自己将其转换为 base64 格式使用，或将其挪到服务器上，从网络地址引用；
     3. 字体文件的引用路径推荐使用以 ~@ 开头的绝对路径。
    ```css
         @font-face {
@@ -536,7 +537,16 @@ uni-app 提供内置 CSS 变量
 ## ES6 支持
 uni-app 在支持绝大部分 ES6 API 的同时，也支持了 ES7 的 await/async。
 
-ES6 API 的支持，详见如下表格部分（`x` 表示不支持，无特殊说明则表示支持。不区分App、小程序、H5）：
+ES6 API 的支持，详见如下表格部分（`x` 表示不支持，无特殊说明则表示支持）：
+- 因为iOS上不允许三方js引擎，所以iOS上不区分App、小程序、H5，各端均仅依赖iOS版本。
+- 各端Android版本有差异：
+* App端的数据见下表；
+* H5端数据见caniuse；
+* 微信小程序[详见](https://developers.weixin.qq.com/miniprogram/dev/framework/runtime/js-support.html#%E5%AE%A2%E6%88%B7%E7%AB%AF%20ES6%20API%20%E6%94%AF%E6%8C%81%E6%83%85%E5%86%B5)
+* 阿里小程序[详见](https://docs.alipay.com/mini/framework/implementation-detail)
+* 百度小程序[详见](https://smartprogram.baidu.com/docs/develop/framework/operating-environment/)
+* 头条小程序[详见](https://developer.toutiao.com/dev/cn/mini-app/develop/framework/mini-app-runtime/javascript-support)
+* QQ小程序[详见](https://q.qq.com/wiki/develop/miniprogram/frame/useful/useful_env.html#es6%E6%94%AF%E6%8C%81%E6%83%85%E5%86%B5)
 
 |String|iOS8|iOS9|iOS10|Android|
 |:-|:-|:-|:-|:-|
@@ -610,7 +620,7 @@ ES6 API 的支持，详见如下表格部分（`x` 表示不支持，无特殊�
 |Promise||||&nbsp;|
 
 **注意**
-- 不管哪个端都是这个数据，即便是Android4.4。因为uni-app编译器把es6语法自动转es5了。低版本Android的兼容性主要是css，太新的css语法在低版本不支持，js语法不受影响。
+- App端Android支持不依赖Android版本号，即便是Android4.4也是上表数据。因为uni-app的js代码运行在自带的独立jscore中，没有js的浏览器兼容性问题。uni-app的vue页面在Android低端机上只有css浏览器兼容性问题，因为vue页面仍然渲染在webview中，受Android版本影响，太新的css语法在低版本不支持。
 - 默认不需要在微信工具里继续开启es6转换。但如果用了微信的wxml自定义组件（wxcomponents目录下），uni-app编译器并不会处理这些文件中的es6代码，需要去微信工具里开启转换。从HBuilderX调起微信工具时，如果发现工程下有wxcomponents目录会自动配置微信工程打开es6转换。
 
 
@@ -722,13 +732,13 @@ const package = require('packageName')
 ```
 ## 小程序组件支持
 
-``uni-app`` 支持在 App 和 小程序 中使用**小程序自定义组件**。
+``uni-app`` 支持在 App 和 小程序 中使用**小程序自定义组件**，从HBuilderX2.4.7起，H5端也可以运行微信小程序组件。
 
 **平台差异说明**
 
 |平台|支持情况|小程序组件存放目录|
 |---|---|---|
-|H5|不支持||
+|H5|支持微信小程序组件（2.4.7+）|wxcomponents|
 |App（不含nvue）|支持微信小程序组件|wxcomponents|
 |微信小程序|支持微信小程序组件|wxcomponents|
 |支付宝小程序|支持支付宝小程序组件|mycomponents|
@@ -955,7 +965,7 @@ WXS是一套运行在视图层的脚本语言，[微信端的规范详见](https
 
 它的特点是运行在视图层。当需要避免逻辑层和渲染层交互通信折损时，可采用wxs。
 
-uni-app可以将wxs代码编译到微信小程序、QQ小程序、APP、H5上（`HBuilderX 2.2.5`及以上版本）
+uni-app可以将wxs代码编译到微信小程序、QQ小程序、app-vue、H5上（`uni-app 2.2.5`及以上版本）
 
 与wxs类似，百度小程序提供了Filter、阿里小程序提供了SJS，uni-app也支持使用这些功能，并将它们编译到百度和阿里的小程序端。不过它们的功能还不如wxs强大。此外头条系小程序自身不支持类似功能。
 
@@ -1168,11 +1178,57 @@ export default {
 - `nvue`页面暂不支持wxs、sjs、filter.js
 - 各个`script`标签会分别被打包至对应支持平台，不需要额外写条件编译
 - 自`HBuilderX 2.2.5`开始，不推荐使用各个小程序自有的引入方式，推荐使用`script`标签引入
+- App和H5端，提供了wxs的升级版，更加强大，见下面的 [renderjs](?id=renderjs) 章节
+
+## renderjs
+
+[WXS](?id=wxs)全称是微信脚本语言，它不够强大。uni-app的app端和h5端做了更多扩展，但扩展后的技术，不再适合使用wxs这个名字了。新的名称叫`renderjs`。
+ 
+wxs仍可以在app和h5端运行。升级版的`renderjs`只支持app-vue和h5。
+
+**平台差异说明**
+
+|App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|QQ小程序|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|√(2.5.5+，仅支持vue，并要求v3编译器)|√|x|x|x|x|x|
+
+renderjs，以 vue 组件的写法运行在 view 层。它有两大优势：
+1. 运行在视图层。当需要频繁操作视图层时，renderjs比运行在逻辑层的普通js，提供更流畅的ui交互。比如canvas动画、比如跟手绘画
+2. 可以直接操作dom、window等web api。也就是完整的echart、three等库都可以使用了
+
+
+### 使用方式
+设置 script 节点的 lang 为 renderjs
+```html
+<script module="test" lang="renderjs">
+	export default {
+		mounted() {
+			// ...
+		},
+		methods: {
+			// ...
+		}
+	}
+</script>
+```
+
+### 示例
+
+* [通过renderjs，在app和h5端使用完成的 echarts](https://ext.dcloud.net.cn/plugin?id=1207)
+
+### 注意事项
+
+* 可以使用 dom、bom API 不可直接访问逻辑层数据
+* 视图层和逻辑层通讯方式与 [WXS](?id=wxs) 一致
+* 观测更新的数据在 view 层可以直接访问到
+* 不要直接引用大型类库，推荐通过动态创建 script 方式引用
+* view 层的页面引用资源的路径相对于根目录计算，例如：./static/test.js
+* 目前仅支持内联使用
 
 
 ## 致谢
 
-```uni-app```的设计使用了 ```vue + 自定义组件``` 的模式；开发者使用```Vue```语法，了解```uni-app```的组件，就可以开发跨端App；感谢```Vue```团队！
+```uni-app```使用 ```vue``` 语法，开发多端应用，感谢```Vue```团队！！
 
 为了照顾开发者的已有学习积累，```uni-app```的组件和api设计，基本参考了微信小程序，学过微信小程序开发，了解```vue```，就能直接上手```uni-app```；感谢微信小程序团队！
 

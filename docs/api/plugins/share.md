@@ -20,7 +20,7 @@
 |scene|String|provider 为 weixin 时必选|场景，可取值参考下面说明。|
 |summary|String|type 为 1 时必选|摘要|
 |href|String|type 为 0 时必选|跳转链接|
-|imageUrl|String|type 为 0、2、5 时必选|图片地址，type为0时，图片大小于 20Kb|
+|imageUrl|String|type 为 0、2、5 时必选|图片地址。type为0时，推荐使用小于20Kb的图片|
 |mediaUrl|String|type 为 3、4 时必选|音视频地址|
 |miniProgram|Object|type 为 5 时必选|分享小程序必要参数|
 |success|Function|否|接口调用成功的回调|
@@ -215,7 +215,7 @@ uni.share({
 
 **平台差异说明**
 
-|5+App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|
+|App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |x|x|√|√|√|√|
 
@@ -263,7 +263,7 @@ export default {
 
 **平台差异说明**
 
-|5+App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|
+|App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |x|x|√|x|√|√|
 
@@ -283,7 +283,7 @@ export default {
 
 **平台差异说明**
 
-|5+App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|
+|App|H5|微信小程序|支付宝小程序|百度小程序|头条小程序|
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |x|x|√|√|x|√|
 
@@ -333,5 +333,5 @@ uni.hideShareMenu()
 
 
 ##### FAQ
-- Q：App端如何集成其他登陆SDK
-- A：使用原生插件方式，可以集成三方sdk，原生插件开发文档见[https://ask.dcloud.net.cn/article/35428](https://ask.dcloud.net.cn/article/35428)。开发之前可以先去[插件市场](https://ext.dcloud.net.cn/)看下有没有做好的。
+- Q：App端如何集成其他分享SDK，如facebook分享、twitter分享
+- A：插件市场已有相关插件，[详见](https://ext.dcloud.net.cn/search?q=%E5%88%86%E4%BA%AB)；也可以根据原生插件教程自行开发，原生插件开发文档见[https://ask.dcloud.net.cn/article/35428](https://ask.dcloud.net.cn/article/35428)
